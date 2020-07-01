@@ -5,8 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-
-import { AuthenticationService } from 'src/app/services/auth.service';
+import { AuthenticationService } from '../../services/auth.service';
 
 @Component({
     selector: 'app-login',

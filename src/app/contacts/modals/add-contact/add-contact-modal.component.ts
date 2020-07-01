@@ -4,9 +4,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Subject } from 'rxjs';
 
-import { UserModel } from '../../models/user.model';
-
 import { ContactsService } from '../../services/contacts.service';
+
+import { UserModel } from 'src/app/shared/models/user.model';
 
 @Component({
     selector: 'app-add-contact-modal',

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 
-import { UserModel } from '../models/user.model';
+import { UserModel } from '../../shared/models/user.model';
 
 
 @Injectable()

@@ -3,13 +3,14 @@ import { Router } from '@angular/router';
 
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
-import { UserModel } from 'src/app/models/user.model';
 
-import { EditContactModalComponent } from 'src/app/modals/edit-contact/edit-contact-modal.component';
-import { AddContactModalComponent } from 'src/app/modals/add-contact/add-contact-modal.component';
+import { EditContactModalComponent } from '../../modals/edit-contact/edit-contact-modal.component';
+import { AddContactModalComponent } from '../../modals/add-contact/add-contact-modal.component';
 
-import { ContactsService } from 'src/app/services/contacts.service';
-import { AuthenticationService } from 'src/app/services/auth.service';
+import { ContactsService } from 'src/app/contacts/services/contacts.service';
+
+import { UserModel } from 'src/app/shared/models/user.model';
+import { AuthenticationService } from 'src/app/auth/services/auth.service';
 
 @Component({
     selector: 'app-contacts',

@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
 
-import { UserModel } from '../models/user.model';
 
 import { UserApi } from './user.api';
+import { UserModel } from 'src/app/shared/models/user.model';
 
 @Injectable({
     providedIn: 'root',

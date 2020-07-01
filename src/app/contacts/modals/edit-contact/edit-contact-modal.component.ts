@@ -6,7 +6,8 @@ import { Subject } from 'rxjs';
 
 import { ContactsService } from '../../services/contacts.service';
 
-import { UserModel } from '../../models/user.model';
+import { UserModel } from 'src/app/shared/models/user.model';
+
 
 @Component({
     selector: 'app-edit-contact-modal',
