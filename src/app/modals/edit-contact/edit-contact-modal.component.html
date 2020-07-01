@@ -1,0 +1,60 @@
+<div class="edit-contact-modal">
+    <div class="modal-header edit-contact-modal-header">
+        <h4 class="modal-title pull-left">Edit contact</h4>
+        <button type="button" class="close close-button pull-right" aria-label="Close" (click)="close()">
+            <i class="fa fa-window-close close-icon" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <div class="modal-body edit-contact-modal-body">
+        <form class="edit-form" [formGroup]="editContactForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="form-group col col-md-6">
+                    <label for="firstName" class="control-label">First name: <span
+                            class="required-label">*</span></label>
+                    <input type="text" id="firstName" class="form-control" formControlName="firstName">
+                    <div *ngIf="submitted && formControl.firstName.invalid">
+                        <span *ngIf="formControl.firstName.errors?.required" class="form-control-error">
+                            First name is required
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group col col-md-6">
+                    <label for="lastName" class="control-label">Last Name: <span class="required-label">*</span></label>
+                    <input type="text" id="lastName" class="form-control" formControlName="lastName">
+                    <div *ngIf="submitted && formControl.lastName.invalid">
+                        <span *ngIf="formControl.lastName.errors?.required" class="form-control-error">
+                            Last name is required
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col col-md-6">
+                    <label for="email" class="control-label">Email: <span class="required-label">*</span></label>
+                    <input type="text" id="email" class="form-control" formControlName="email">
+                    <div *ngIf="submitted && formControl.email.invalid">
+                        <span *ngIf="formControl.email.errors?.required" class="form-control-error">
+                            Email is required
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group col col-md-6">
+                    <label for="phoneNumber" class="control-label">Phone number: <span
+                            class="required-label">*</span></label>
+                    <input type="text" id="phoneNumber" class="form-control" formControlName="phoneNumber">
+                    <div *ngIf="submitted && formControl.phoneNumber.invalid">
+                        <span *ngIf="formControl.phoneNumber.errors?.required" class="form-control-error">
+                            Phone number is required
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-button">
+                <button type="submit" class="btn btn-primary" [disabled]="loading">
+                    Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

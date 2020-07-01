@@ -1,0 +1,39 @@
+<div class="container login-page">
+    <div class="card login-card ">
+        <div class="card-title login-card-title">
+            <h3>
+                <strong>Login</strong>
+            </h3>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" formControlName="email" class="form-control" />
+                    <div *ngIf="submitted && formControl.email.invalid">
+                        <span *ngIf="formControl.email.errors?.required" class="form-control-error">
+                            Email is required
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" formControlName="password" class="form-control"
+                        [ngClass]="{ 'error': submitted && formControl.password.errors }" />
+                    <div *ngIf="submitted && formControl.password.invalid">
+                        <span *ngIf="formControl.password.errors?.required" class="form-control-error">
+                            Password is required
+                        </span>
+                    </div>
+                </div>
+                <span class="form-control-error" *ngIf="loginForm.errors?.invalid_credentials">
+                    Invalid email or password
+                </span>
+                <div class="form-button">
+                    <button type="submit" class="btn btn-primary" [disabled]="loading">
+                        Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
