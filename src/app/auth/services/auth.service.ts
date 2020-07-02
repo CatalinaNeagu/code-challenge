@@ -5,29 +5,31 @@ import { Observable, BehaviorSubject } from 'rxjs';
 
 
 import { UserApi } from './user.api';
-import { UserModel } from 'src/app/shared/models/user.model';
+
+import { UserCredentialsModel } from 'src/app/shared/interfaces/user.model';
 
 @Injectable({
     providedIn: 'root',
 })
 
 export class AuthenticationService {
-    private currentUserSubject = new BehaviorSubject<UserModel>(null);
+    private currentUserCredentialsSubject = new BehaviorSubject<UserCredentialsModel>(null);
     constructor(
         private userApi: UserApi) {
     }
-    public login$(user: { email: string, password: string }): Observable<any> {
-        return this.userApi.login(user).pipe(map((token) => {
+    public login$(userCredentials: UserCredentialsModel): Observable<any> {
+        console.log(userCredentials, 'user');
+        return this.userApi.login(userCredentials).pipe(map((token) => {
             localStorage.setItem('token', token);
-            this.currentUserSubject.next(user);
+            this.currentUserCredentialsSubject.next(userCredentials);
         }));
     }
     public logout(): void {
         localStorage.removeItem('token');
         localStorage.clear();
-        this.currentUserSubject.next(null);
+        this.currentUserCredentialsSubject.next(null);
     }
-    public getCurrentUser(): Observable<UserModel> {
-        return this.currentUserSubject.asObservable();
+    public getCurrentUserCredentials(): Observable<UserCredentialsModel> {
+        return this.currentUserCredentialsSubject.asObservable();
     }
 }

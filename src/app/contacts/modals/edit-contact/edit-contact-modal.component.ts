@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 
 import { ContactsService } from '../../services/contacts.service';
 
-import { UserModel } from 'src/app/shared/models/user.model';
+import { UserModel } from 'src/app/shared/interfaces/user.model';
 
 
 @Component({

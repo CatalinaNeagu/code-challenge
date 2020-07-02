@@ -9,7 +9,7 @@ import { AddContactModalComponent } from '../../modals/add-contact/add-contact-m
 
 import { ContactsService } from 'src/app/contacts/services/contacts.service';
 
-import { UserModel } from 'src/app/shared/models/user.model';
+import { UserModel } from 'src/app/shared/interfaces/user.model';
 import { AuthenticationService } from 'src/app/auth/services/auth.service';
 
 @Component({
@@ -62,8 +62,10 @@ export class ContactsComponent implements OnInit {
         });
     }
     private getLoggedInUser() {
-        this.authService.getCurrentUser().subscribe((user) => {
-            this.loggedInUser = this.contactsService.fakeData.find(x => x.email === user.email && x.password === user.password);
+        this.authService.getCurrentUserCredentials().subscribe((user) => {
+            if (user) {
+                this.loggedInUser = this.contactsService.fakeData.find(x => x.email === user.email && x.password === user.password);
+            }
         });
         return this.loggedInUser;
     }
