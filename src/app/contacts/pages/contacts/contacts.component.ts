@@ -9,7 +9,7 @@ import { AddContactModalComponent } from '../../modals/add-contact/add-contact-m
 
 import { ContactsService } from 'src/app/contacts/services/contacts.service';
 
-import { UserModel } from 'src/app/shared/interfaces/user.model';
+import { User } from 'src/app/contacts/interfaces/user';
 import { AuthenticationService } from 'src/app/auth/services/auth.service';
 
 @Component({
@@ -19,11 +19,11 @@ import { AuthenticationService } from 'src/app/auth/services/auth.service';
 })
 
 export class ContactsComponent implements OnInit {
-    public users: UserModel[];
+    public users: User[];
     public bsModalRef: BsModalRef;
     public index: any;
-    public user: UserModel;
-    public loggedInUser: UserModel;
+    public user: User;
+    public loggedInUser: User;
     constructor(
         private contactsService: ContactsService,
         private modalService: BsModalService,

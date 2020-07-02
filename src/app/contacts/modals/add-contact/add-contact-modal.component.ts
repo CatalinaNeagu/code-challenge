@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 
 import { ContactsService } from '../../services/contacts.service';
 
-import { UserModel } from 'src/app/shared/interfaces/user.model';
+import { User } from 'src/app/contacts/interfaces/user';
 
 @Component({
     selector: 'app-add-contact-modal',
@@ -19,7 +19,7 @@ export class AddContactModalComponent implements OnInit {
     public loading: boolean;
     public addContactForm: FormGroup;
     public onClose: Subject<boolean>;
-    public user: UserModel;
+    public user: User;
     public parameter: number;
     constructor(
         private bsModalRef: BsModalRef,
@@ -50,7 +50,7 @@ export class AddContactModalComponent implements OnInit {
         this.addNewContact(this.addContactForm.value);
     }
 
-    private addNewContact(addContactFormValue: UserModel) {
+    private addNewContact(addContactFormValue: User) {
         this.contactsService.add(addContactFormValue).subscribe((users) => console.log(users));
         this.bsModalRef.hide();
         this.onClose.next(true);

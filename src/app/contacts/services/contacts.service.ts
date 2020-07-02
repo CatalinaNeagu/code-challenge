@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 
-import { UserModel } from '../../shared/interfaces/user.model';
+import { User } from '../interfaces/user';
 
 
 @Injectable()
@@ -12,7 +12,7 @@ export class ContactsService {
 
     // TODO: don't show the password + create option to modify password
 
-    fakeData: UserModel[] = [
+    fakeData: User[] = [
         { id: 1, firstName: 'Ionescu', lastName: 'Andrei', email: 'andrei.ionescu@gmail.com',
         password: 'secret', phoneNumber: '0744898587' },
         { id: 2, firstName: 'Popescu', lastName: 'Ana', email: 'ana.popescu@gmail.com', password: 'secret', phoneNumber: '0744898789' },
@@ -20,21 +20,21 @@ export class ContactsService {
     ];
 
 
-    public getAll(): Observable<UserModel[]> {
-        return of<UserModel[]>(this.fakeData);
+    public getAll(): Observable<User[]> {
+        return of<User[]>(this.fakeData);
     }
 
-    public delete(index: number): Observable<UserModel[]> {
-        return of<UserModel[]>(this.fakeData.splice(index, 1));
+    public delete(index: number): Observable<User[]> {
+        return of<User[]>(this.fakeData.splice(index, 1));
     }
 
-    public add(user: UserModel): Observable<UserModel[]> {
+    public add(user: User): Observable<User[]> {
         this.fakeData.push(user);
-        return of<UserModel[]>(this.fakeData);
+        return of<User[]>(this.fakeData);
     }
 
-    public update(index: number, user: UserModel): Observable<UserModel[]> {
+    public update(index: number, user: User): Observable<User[]> {
         this.fakeData.splice(index, 1, user);
-        return of<UserModel[]>(this.fakeData);
+        return of<User[]>(this.fakeData);
     }
 }

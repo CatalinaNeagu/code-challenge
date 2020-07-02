@@ -1,5 +1,4 @@
-
-export interface UserModel {
+export interface User {
     firstName: string;
     lastName: string;
     phoneNumber: string;
@@ -7,4 +6,3 @@ export interface UserModel {
     password: string;
     id: number;
 }
-export type UserCredentialsModel = Pick<UserModel, 'email' | 'password'>;

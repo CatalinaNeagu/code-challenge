@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 
 import { ContactsService } from '../../services/contacts.service';
 
-import { UserModel } from 'src/app/shared/interfaces/user.model';
+import { User } from 'src/app/contacts/interfaces/user';
 
 
 @Component({
@@ -18,13 +18,13 @@ import { UserModel } from 'src/app/shared/interfaces/user.model';
 
 export class EditContactModalComponent implements OnInit {
 
-    @Input() user: UserModel;
+    @Input() user: User;
     public submitted: boolean;
     public loading: boolean;
     public editContactForm: FormGroup;
     public onClose: Subject<boolean>;
     public index: number;
-    public users: UserModel[];
+    public users: User[];
     public parameter: number;
 
     constructor(
@@ -66,7 +66,7 @@ export class EditContactModalComponent implements OnInit {
         });
     }
 
-    private editPersonalInformation(index, editContactFormValue: UserModel) {
+    private editPersonalInformation(index, editContactFormValue: User) {
         this.contactsService.update(index, editContactFormValue).subscribe((users) => console.log(users));
         this.bsModalRef.hide();
         this.onClose.next(true);
