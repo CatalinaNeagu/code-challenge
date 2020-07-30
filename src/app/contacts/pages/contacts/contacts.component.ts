@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewContainerRef } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-
+import { ModalOptions } from 'ngx-bootstrap/modal';
 
 import { EditContactModalComponent } from '../../modals/edit-contact/edit-contact-modal.component';
 import { AddContactModalComponent } from '../../modals/add-contact/add-contact-modal.component';
 
-import { ContactsService } from 'src/app/contacts/services/contacts.service';
-
 import { User } from 'src/app/contacts/interfaces/user';
+
 import { AuthenticationService } from 'src/app/auth/services/auth.service';
+import { ModalService } from 'src/app/shared/services/shared-modal.service';
+import { ContactsService } from 'src/app/contacts/services/contacts.service';
 
 @Component({
     selector: 'app-contacts',
@@ -19,16 +19,16 @@ import { AuthenticationService } from 'src/app/auth/services/auth.service';
 })
 
 export class ContactsComponent implements OnInit {
+    @Input() user: User;
     public users: User[];
-    public bsModalRef: BsModalRef;
     public index: any;
-    public user: User;
     public loggedInUser: User;
     constructor(
         private contactsService: ContactsService,
-        private modalService: BsModalService,
         private authService: AuthenticationService,
         private router: Router,
+        private sharedModalService: ModalService,
+        private viewContainerRef: ViewContainerRef
     ) {
     }
 
@@ -39,23 +39,41 @@ export class ContactsComponent implements OnInit {
     public editContact(index: any) {
         this.index = index;
         this.user = { ...this.users[index] };
-        const initialState = { user: this.user };
-        this.bsModalRef = this.modalService.show(EditContactModalComponent, { initialState });
-        this.bsModalRef.content.closeBtnName = 'Close';
+        const config: Partial<ModalOptions> = {
+            initialState: {
+                user: this.user
+            }
+        };
+        this.sharedModalService.createModal(
+            'sample-modal',
+            'Edit contact',
+            this.viewContainerRef,
+            EditContactModalComponent, config).content.onClose.subscribe(data => {
+                this.user = data;
+            });
+    }
+
+    public addContact() {
+        const config: Partial<ModalOptions> = {
+            initialState: {
+            }
+        };
+        this.sharedModalService.createModal(
+            'sample-modal',
+            'Add contact',
+            this.viewContainerRef,
+            AddContactModalComponent, config).content.onClose.subscribe(data => this.user = data);
     }
 
     public deleteContact(index: any) {
         this.contactsService.delete(index).subscribe(() => console.log('succes'));
     }
-    public addContact() {
-        const initialState = {};
-        this.bsModalRef = this.modalService.show(AddContactModalComponent, { initialState });
-        this.bsModalRef.content.closeBtnName = 'Close';
-    }
+
     public logout() {
         this.authService.logout();
         this.router.navigateByUrl('/login');
     }
+
     private loadAllUsers() {
         this.contactsService.getAll().subscribe(users => {
             this.users = users;
@@ -70,3 +88,4 @@ export class ContactsComponent implements OnInit {
         return this.loggedInUser;
     }
 }
+

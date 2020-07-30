@@ -25,9 +25,7 @@ export class AddContactModalComponent implements OnInit {
         private bsModalRef: BsModalRef,
         private formBuilder: FormBuilder,
         private contactsService: ContactsService,
-
-    ) {
-    }
+    ) { }
 
     public ngOnInit(): void {
         this.submitted = false;
@@ -35,7 +33,7 @@ export class AddContactModalComponent implements OnInit {
         this.initForm();
         this.onClose = new Subject<boolean>();
     }
-    get formControl() {
+    get formControls() {
         return this.addContactForm.controls;
     }
 
@@ -55,6 +53,7 @@ export class AddContactModalComponent implements OnInit {
         this.bsModalRef.hide();
         this.onClose.next(true);
     }
+
     private initForm() {
         this.addContactForm = this.formBuilder.group({
             email: ['', Validators.required],

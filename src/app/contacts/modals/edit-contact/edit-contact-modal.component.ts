@@ -8,17 +8,14 @@ import { ContactsService } from '../../services/contacts.service';
 
 import { User } from 'src/app/contacts/interfaces/user';
 
-
 @Component({
     selector: 'app-edit-contact-modal',
     templateUrl: './edit-contact-modal.component.html',
     styleUrls: ['./edit-contact-modal.component.scss']
-
 })
 
 export class EditContactModalComponent implements OnInit {
-
-    @Input() user: User;
+    @Input() user: Partial<User>  = {};
     public submitted: boolean;
     public loading: boolean;
     public editContactForm: FormGroup;
@@ -40,7 +37,7 @@ export class EditContactModalComponent implements OnInit {
         this.initForm();
         this.onClose = new Subject<boolean>();
     }
-    get formControl() {
+    get formControls() {
         return this.editContactForm.controls;
     }
 

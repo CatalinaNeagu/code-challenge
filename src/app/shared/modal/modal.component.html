@@ -1,0 +1,15 @@
+<div id="{{modalId}}" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div *ngIf="header" class="modal-header">
+        <h5>{{header}}</h5>
+      </div>
+      <div class="modal-body">
+        <div #modalContent></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

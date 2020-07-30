@@ -18,7 +18,6 @@ export class AuthenticationService {
         private userApi: UserApi) {
     }
     public login$(userCredentials: UserCredentials): Observable<any> {
-        console.log(userCredentials, 'user');
         return this.userApi.login(userCredentials).pipe(map((token) => {
             localStorage.setItem('token', token);
             this.currentUserCredentialsSubject.next(userCredentials);

@@ -3,20 +3,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
-
 import { ContactsRoutingModule } from './contacts-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { EditContactModalComponent } from './modals/edit-contact/edit-contact-modal.component';
 import { AddContactModalComponent } from './modals/add-contact/add-contact-modal.component';
+import { ModalComponent } from '../shared/modal/modal.component';
 
 import { ContactsService } from './services/contacts.service';
 
 @NgModule({
   imports: [
-    ModalModule.forRoot(),
     SharedModule,
     ContactsRoutingModule,
     FormsModule,
@@ -32,11 +30,11 @@ import { ContactsService } from './services/contacts.service';
   entryComponents: [
     EditContactModalComponent,
     AddContactModalComponent,
-],
-providers: [
-  BsModalRef,
-  ContactsService,
-],
+    ModalComponent,
+  ],
+  providers: [
+    ContactsService,
+  ],
 })
 
 export class ContactsModule {
