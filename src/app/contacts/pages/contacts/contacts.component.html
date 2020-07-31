@@ -23,7 +23,7 @@
         <td>{{user.email}}</td>
         <td>{{user.phoneNumber}}</td>
         <td>
-          <button class="btn btn-primary" (click)="editContact(i)">
+          <button class="btn btn-primary" (click)="manageContact(i)">
             <i class="fa fa-pencil"></i>
           </button>
         </td>
@@ -35,5 +35,5 @@
       </tr>
     </tbody>
   </table>
-  <button class="btn btn-primary" (click)="addContact()"> + Add new contact</button>
+  <button class="btn btn-primary" (click)="manageContact()"> + Add new contact</button>
 </div>

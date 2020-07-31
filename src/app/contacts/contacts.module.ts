@@ -9,8 +9,7 @@ import { ContactsRoutingModule } from './contacts-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
 import { ContactsComponent } from './pages/contacts/contacts.component';
-import { EditContactModalComponent } from './modals/edit-contact/edit-contact-modal.component';
-import { AddContactModalComponent } from './modals/add-contact/add-contact-modal.component';
+import { ManageContactModalComponent } from './modals/manage-contact/manage-contact-modal.component';
 
 import { ContactsService } from './services/contacts.service';
 
@@ -26,12 +25,10 @@ import { ContactsService } from './services/contacts.service';
   ],
   declarations: [
     ContactsComponent,
-    EditContactModalComponent,
-    AddContactModalComponent,
+    ManageContactModalComponent,
   ],
   entryComponents: [
-    EditContactModalComponent,
-    AddContactModalComponent,
+    ManageContactModalComponent,
 ],
 providers: [
   BsModalRef,
