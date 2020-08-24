@@ -22,7 +22,7 @@ export class ContactsService {
 
 
     public getAll(): Observable<User[]> {
-        return of<User[]>(this.fakeData);
+        return of<User[]>(this.sortUsersAlphabetically(this.fakeData));
     }
 
     public delete(index: number): Observable<User[]> {
@@ -32,11 +32,15 @@ export class ContactsService {
     public add(user: User): Observable<User[]> {
         user.id = uuid();
         this.fakeData.push(user);
-        return of<User[]>(this.fakeData);
+        return of<User[]>(this.sortUsersAlphabetically(this.fakeData));
     }
 
     public update(index: number, user: User): Observable<User[]> {
         this.fakeData.splice(index, 1, user);
-        return of<User[]>(this.fakeData);
+        return of<User[]>(this.sortUsersAlphabetically(this.fakeData));
+    }
+
+    private sortUsersAlphabetically(users: User[]){
+        return users.sort((a, b) => (a.firstName.toLowerCase() > b.firstName.toLowerCase()) ? 1 : -1);
     }
 }
