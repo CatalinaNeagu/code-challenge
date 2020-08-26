@@ -1,9 +1,11 @@
+@import '../../../../assets/colors.scss';
+
 .contacts-page {
     .header {
         margin: 20px 0;
         text-align: right;
         .greeting {
-            color: darkblue;
+            color: $very-dark-blue;
             font-size: 18px;
         }
     }

@@ -10,6 +10,7 @@ import { SharedModule } from '../shared/shared.module';
 
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { ManageContactModalComponent } from './modals/manage-contact/manage-contact-modal.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 import { ContactsService } from './services/contacts.service';
 
@@ -26,6 +27,7 @@ import { ContactsService } from './services/contacts.service';
   declarations: [
     ContactsComponent,
     ManageContactModalComponent,
+    ProfileComponent,
   ],
   entryComponents: [
     ManageContactModalComponent,

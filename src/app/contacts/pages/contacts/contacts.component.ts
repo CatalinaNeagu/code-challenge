@@ -58,6 +58,9 @@ export class ContactsComponent implements OnInit {
         this.authService.logout();
         this.router.navigateByUrl('/login');
     }
+    public goToProfilePage(){
+        this.router.navigateByUrl('/profile');
+    }
     private loadAllUsers() {
         this.contactsService.getAll().subscribe(users => {
             this.users = users;
