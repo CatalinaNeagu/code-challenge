@@ -11,6 +11,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { ManageContactModalComponent } from './modals/manage-contact/manage-contact-modal.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ExperienceComponent } from './pages/experience/experience.component';
 
 import { ContactsService } from './services/contacts.service';
 
@@ -28,6 +29,7 @@ import { ContactsService } from './services/contacts.service';
     ContactsComponent,
     ManageContactModalComponent,
     ProfileComponent,
+    ExperienceComponent,
   ],
   entryComponents: [
     ManageContactModalComponent,
