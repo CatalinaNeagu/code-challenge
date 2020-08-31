@@ -1,14 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppRoutingModule } from './app-routing.module';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
 
 import { AppComponent } from './app.component';
 
+import { AppRoutingModule } from './app-routing.module';
 import { ContactsModule } from './contacts/contacts.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
-import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { CommonModule } from '@angular/common';
     ContactsModule,
     AuthModule,
     SharedModule,
+    BsDropdownModule.forRoot(),
+    BrowserAnimationsModule,
   ],
 
   bootstrap: [AppComponent]

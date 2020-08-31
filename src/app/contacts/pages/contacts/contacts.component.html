@@ -1,40 +1,50 @@
 <div class="container contacts-page">
   <div class="header">
-    <div class="greeting">Hello, {{loggedInUser.lastName}}!</div>
-    <div>
-      <button class="btn btn-danger" (click)="logout()">Logout</button>
-      <button class="btn btn-danger" (click)="goToProfilePage()">Profile</button>
+    <h3 class="title">Contacts</h3>
+    <div class="btn-group" dropdown>
+      <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+        {{loggedInUser.lastName}} <span class="caret"></span>
+      </button>
+      <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
+        <li role="menuitem"><a class="dropdown-item" (click)="goToProfilePage()">Profile</a></li>
+        <li role="menuitem"><a class="dropdown-item" (click)="logout()">Logout</a>
+        </li>
+      </ul>
     </div>
   </div>
-  <table class="table table-striped contacts-table">
-    <thead>
-      <tr>
-        <th scope="col">No.</th>
-        <th scope="col">Firstname</th>
-        <th scope="col">Lastname</th>
-        <th scope="col">Email</th>
-        <th scope="col">Phone number</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users; let i = index">
-        <td>{{i+1}}</td>
-        <td>{{user.firstName}}</td>
-        <td>{{user.lastName}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.phoneNumber}}</td>
-        <td>
-          <button class="btn btn-primary" (click)="manageContact(i)">
-            <i class="fa fa-pencil"></i>
-          </button>
-        </td>
-        <td>
-          <button class="btn btn-primary" (click)="deleteContact(i)">
-            <i class="fa fa-trash"></i>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table contacts-table">
+      <thead>
+        <tr>
+          <th scope="col">No.</th>
+          <th scope="col">Firstname</th>
+          <th scope="col">Lastname</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone number</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users; let i = index">
+          <td>{{i+1}}</td>
+          <td>{{user.firstName}}</td>
+          <td>{{user.lastName}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.phoneNumber}}</td>
+          <td>
+            <button class="btn btn-primary" (click)="manageContact(i)">
+              <i class="fa fa-pencil"></i>
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-primary" (click)="deleteContact(i)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <button class="btn btn-primary" (click)="manageContact()"> + Add new contact</button>
 </div>

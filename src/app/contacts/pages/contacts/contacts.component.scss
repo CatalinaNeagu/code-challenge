@@ -1,15 +1,24 @@
-@import '../../../../assets/colors.scss';
+@import "../../../../assets/colors.scss";
 
 .contacts-page {
+    background-color: $very-light-orange;
+    margin: 0;
+    padding: 15px;
+    width: 100%;
+    height: 100vh;
     .header {
-        margin: 20px 0;
-        text-align: right;
-        .greeting {
-            color: $very-dark-blue;
-            font-size: 18px;
+        display: flex;
+        margin: 20px 0 70px 0;
+        justify-content: space-between;
+        align-items: center;
+        .title {
+            font-weight: bold;
+            color: $light-red;
         }
-    }
-    .contacts-table {
-        margin-top: 50px;
+        .dropdown-menu {
+            .dropdown-item {
+                cursor: pointer;
+            }
+        }
     }
 }

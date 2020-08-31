@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { ContactsRoutingModule } from './contacts-routing.module';
 import { SharedModule } from '../shared/shared.module';
@@ -24,6 +25,7 @@ import { ContactsService } from './services/contacts.service';
     ReactiveFormsModule,
     MatIconModule,
     CommonModule,
+    BsDropdownModule,
   ],
   declarations: [
     ContactsComponent,
@@ -33,11 +35,11 @@ import { ContactsService } from './services/contacts.service';
   ],
   entryComponents: [
     ManageContactModalComponent,
-],
-providers: [
-  BsModalRef,
-  ContactsService,
-],
+  ],
+  providers: [
+    BsModalRef,
+    ContactsService,
+  ],
 })
 
 export class ContactsModule {
